@@ -8,8 +8,8 @@
 <body>
     <h1>Recipe Book</h1>
     <ul>
-        {% for x in recipes_list %}
-            <li><h2><a href="/ledger{{x.link}}">{{x.name}}</a></h2></li>
+        {% for x in object_list %}
+            <li><h2><a href="/ledger/recipe/{{x.pk}}">{{x.name}}</a></h2></li>
         {% endfor %}
     </ul>
 </body>
