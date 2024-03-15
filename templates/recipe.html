@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{name}}</title>
-</head>
-<body>
-<a href="/ledger/recipes/list"> <h1> List of Recipes </h1> </a>
-<h1> {{object.name}} </h1>
-<h2> Ingredients: </h2>
-<ul>
-    {% for i in object.ingredients.all %}
-        <li>{{i.ingredientField.name}} : {{i.quantity}}</li>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Recipe Detail{% endblock %}
+{% block content %}
+  <h1>{{ object.name }} by {{ object.author }}</h1>
+  <h2>Ingredients:</h2>
+  <ul>
+    {% for x in object.ingredients.all %}
+      <li>{{ x.ingredient.name }}, {{ x.quantity }}</li>
     {% endfor %}
-</ul>
-</body>
-</html>
+  </ul>
+  <a href="/recipes/list">
+    <h2>Go back to Recipe List</h2>
+  </a>
+{% endblock %}

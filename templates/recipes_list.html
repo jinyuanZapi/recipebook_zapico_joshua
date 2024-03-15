@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes List</title>
-</head>
-<body>
-    <h1>Recipe Book</h1>
-    <ul>
-        {% for x in object_list %}
-            <li><h2><a href="/ledger/recipe/{{x.pk}}">{{x.name}}</a></h2></li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %} Recipe List {% endblock %}
+{% block title %}Recipe Book{% endblock %}
+{% block content %}
+  <ul>
+    {% for x in object_list %}
+      <li>   
+        <a href="{{ x.get_absolute_url }}">{{ x.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
